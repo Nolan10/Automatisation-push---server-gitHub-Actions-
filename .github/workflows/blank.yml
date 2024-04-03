@@ -14,8 +14,12 @@ jobs:
         uses: actions/checkout@v2  # Cette action permet de récupérer le contenu du dépôt
 
       - name: Copy files to local directory
-        run: cp -r . /home/tessier/Documents/testGitHubAction/  # Copie récursive du contenu du dépôt vers le répertoire local
+        run: cd Automatisation-push---server-gitHub-Actions #cp -r . /home/tessier/Documents/testGitHubAction/  
+        # Copie récursive du contenu du dépôt vers le répertoire local
 
+      - name: ls
+        run: ls -l 
+        
       # Optionnel : Affichage des fichiers copiés pour vérification
       - name: List copied files
         run: ls /home/tessier/Documents/testGitHubAction/
