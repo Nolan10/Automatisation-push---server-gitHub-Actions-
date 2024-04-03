@@ -1,4 +1,4 @@
-name: Copy Repository to Local Directory
+name: SSH Deploy
 
 on:
   push:
@@ -6,19 +6,20 @@ on:
       - main  # Remplacez par le nom de votre branche principale si différent
 
 jobs:
-  copy_repository:
-    runs-on: ubuntu-latest  # Système d'exploitation utilisé pour l'exécution de l'action
+  deploy:
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2  # Cette action permet de récupérer le contenu du dépôt
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-      - name: Copy files to local directory
-        run: cd /home #cp -r . /home/tessier/Documents/testGitHubAction/  
-        # Copie récursive du contenu du dépôt vers le répertoire local
-
-      - name: ls
-        run: ls -l 
-        
-      - name: List files in local directory
-        run: sudo ssh nolan@213.32.91.121
+    - name: SSH into VPS and run command
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: ${{ secrets.SSH_PORT }}
+        script: |
+          # Commandes à exécuter sur le VPS
+          echo "Hello from GitHub Actions!"
