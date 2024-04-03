@@ -22,4 +22,4 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         script: |
           # Copy files using scp
-          scp /github/workspace/test2.txt ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/var/www/html/testPourPortfolio
+          scp /github/workspace/test2.txt nolan@213.32.91.121:/var/www/html/testPourPortfolio
