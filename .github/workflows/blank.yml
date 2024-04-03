@@ -22,4 +22,5 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         script: |
           # Commandes à exécuter sur le VPS
-          scp -r /github/workspace/* ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/var/www/html/testPourPortfolio
+          # scp -r /github/workspace/* ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/var/www/html/testPourPortfolio
+          ls -l
