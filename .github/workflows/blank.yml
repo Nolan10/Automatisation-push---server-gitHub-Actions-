@@ -22,5 +22,5 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         script: |
           # Commandes à exécuter sur le VPS
-          echo "Hello from GitHub Actions!"
+          ls -a -l
 
