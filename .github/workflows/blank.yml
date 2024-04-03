@@ -21,8 +21,6 @@ jobs:
         source: "."
         target: "/var/www/html/testPourPortfolio"
 
-        tar_exec: tar --no-same-owner
-
     - name: Executing remote command
       uses: appleboy/ssh-action@master
       with:
