@@ -22,5 +22,6 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         script: |
           # Commandes à exécuter sur le VPS
+          cd /var/www/
           ls -a -l
 
