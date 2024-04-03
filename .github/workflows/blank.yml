@@ -1,14 +1,21 @@
-name: Hello World
+name: Copy Repository to Local Directory
 
 on:
   push:
     branches:
-      - main
+      - main  # Remplacez par le nom de votre branche principale si différent
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  copy_repository:
+    runs-on: ubuntu-latest  # Système d'exploitation utilisé pour l'exécution de l'action
 
     steps:
-      - name: Say Hello
-        run: echo "Hello World"
+      - name: Checkout repository
+        uses: actions/checkout@v2  # Cette action permet de récupérer le contenu du dépôt
+
+      - name: Copy files to local directory
+        run: cp -r . /home/tessier/Documents/testGitHubAction/  # Copie récursive du contenu du dépôt vers le répertoire local
+
+      # Optionnel : Affichage des fichiers copiés pour vérification
+      - name: List copied files
+        run: ls /home/tessier/Documents/testGitHubAction/
