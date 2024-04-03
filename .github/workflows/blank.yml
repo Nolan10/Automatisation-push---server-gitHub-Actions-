@@ -3,7 +3,7 @@ name: SSH Deploy
 on:
   push:
     branches:
-      - main  # Remplacez par le nom de votre branche principale si différent
+      - main
 
 jobs:
   deploy:
@@ -13,7 +13,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: SSH into VPS and run command
+    - name: SSH into VPS and copy files
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.SSH_HOST }}
@@ -21,6 +21,5 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.SSH_PORT }}
         script: |
-          # Commandes à exécuter sur le VPS
-          # scp -r /github/workspace/* ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/var/www/html/testPourPortfolio
-          ls -l
+          # Copy files using scp
+          scp -r /github/workspace/* ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/var/www/html/testPourPortfolio
