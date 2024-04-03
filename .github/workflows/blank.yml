@@ -16,10 +16,11 @@ jobs:
     - name: SSH into VPS and run command
       uses: appleboy/ssh-action@master
       with:
-        host: ${{ SSH_HOST.SSH_HOST }}
-        username: ${{ SSH_HOST.SSH_USERNAME }}
-        key: ${{ SSH_HOST.SSH_PRIVATE_KEY }}
-        port: ${{ SSH_HOST.SSH_PORT }}
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: ${{ secrets.SSH_PORT }}
         script: |
           # Commandes à exécuter sur le VPS
           echo "Hello from GitHub Actions!"
+
